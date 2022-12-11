@@ -4,40 +4,40 @@
 #include <string.h>
 #include "stm32f4xx.h"  
 
-void deleteN(nodeType* head, int position)
+
+void deleteN(nodeType** head, int position)
 {
-   int index=1;
-   //work in progress, this code just delete the head node.
-   nodeType * temp = head;
+    
+    nodeType* temp;
+    nodeType* prev;
+    linklist_length(*head);
 
-   if(position == 1)
-   {
-       head = head -> next;
-       free(temp);
-       display(head); 
+    if(position ==1)
+    {
+        *head = (*head)->next;
+        free(temp);
     }
-   else
-   {
-        for(index=1;index<position;index++)
+    else
+    {
+        for(int i =0; i<position;i++)
         {
-            temp = head;
-            head = head -> next;
-            
-            free(temp);
+            printf("for loop calling\r\n");
+            if (i == position - 1 && temp) 
+            {
+                prev-> next = temp->next;
+                free(temp);
+            }
+            else
+            {   prev =temp;
+                
+                if(prev==NULL)
+                    break;
+                
+                temp =temp->next;
+            }
         }
-       
-//        for(index=1;index<position;index++)
-//        {
-//            temp ->next = head;
-//            head = head -> next;
-//        }
-        
-            temp->next = head->next;
-        display(temp);
-   }
 
-    
-    
+    }
 }
 
 void display(nodeType *head)
@@ -99,10 +99,32 @@ nodeType* linkedlistCreate(int *ptr, int arrLength)
         newNode= (nodeType*)malloc(sizeof(nodeType));
         newNode ->data = ptr[index];
         last->next = newNode;
-        last = newNode;
+       display(newNode);
+        last = newNode; //update head node
+       // display(last);
+       // display(head);
     }
+   // display(last);
+    
+// num variable
+// int num = 10;
+
+//  ptr pointer variable
+//  int *ptr = NULL;
+
+//  assigning the address of num to ptr
+//  ptr = &num;
+//  update num via pointer
+//  *ptr = 20;
+
+//num: 10
+//num via ptr: 10
+//Updating value of num via ptr...
+//num: 20
+//num via ptr: 20
     
     return head;
+   // return 0;
 }
 
 void linkList_Derive_From_Data_delete_first_data()
@@ -110,8 +132,8 @@ void linkList_Derive_From_Data_delete_first_data()
 	int arr[] ={5,3,7,4,8,9};
 	
 	nodeType*  myList = linkedlistCreate(arr,6);
-    deleteN(myList,3);
-    
+    deleteN(&myList,3);
+    display(myList);    
 }
 void linkList_Derive_From_Data()
 {
@@ -201,6 +223,10 @@ void linklist_setup(void)
         case 'c':
             printf("link list insert with position mentioned\r\n");
             linklist_position_insert_pos_mentioned();
+            break;
+        
+        case 'd':
+            linkList_Derive_From_Data_delete_first_data();
             break;
 
 

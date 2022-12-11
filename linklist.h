@@ -11,7 +11,7 @@ struct node
 typedef struct node nodeType;
 void display(nodeType *head);
 uint32_t linklist_length(nodeType* list);
-void deleteN(nodeType* head, int position);
+void deleteN(nodeType** head, int position);
 void display(nodeType *head);
 void initList_insertFront_insertLast(void);
 nodeType* linkedlistCreate(int *ptr, int arrLength);
