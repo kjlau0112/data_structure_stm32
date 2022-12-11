@@ -1,5 +1,5 @@
 #include "uart.h"
-
+#include <string.h>
 void USART2_Init(void)
 {
 		//1.enable clock access to uart2
@@ -73,11 +73,21 @@ char str[80];
 		
 void test_setup(void){
 	
-	printf("please enter a number: ");
-	scanf("%d", &n);
-	printf("the number entered is: %d\r\n", n);
-	printf("please type a character string: ");
+    char word = 'i';
+//	printf("please enter a number: ");
+	//scanf("%d", &n);
+	//printf("the number entered is: %d\r\n", n);
+	printf("Link list MCU guide\r\n: ");
+    
+    printf("i\r\n: insertion feature\r\n");
+   // printf("");
 	gets(str);
+    if (strcmp(str,"i\r\n"))
+    {
+        printf("link list insertion fetaure\r\n");
+    }
+    
+    
 	printf("the character string entered is: ");
 	puts(str);
 	printf("\r\n");
