@@ -84,28 +84,6 @@ void initList_insertFront_insertLast()
 }
 
 
-nodeType* linkedlistCreate(int *ptr, int arrLength)
-{
-    int index=1;
-    nodeType *last,*head,*newNode;
-    head = (nodeType*)malloc(sizeof(nodeType));
-
-    head->data = ptr[0];
-    head->next= NULL;
-    last = head;
-
-    for(index=1;index<arrLength;index++)
-    {
-        newNode= (nodeType*)malloc(sizeof(nodeType));
-        newNode ->data = ptr[index];
-        last->next = newNode;
-       display(newNode);
-        last = newNode; //update head node
-       // display(last);
-       // display(head);
-    }
-   // display(last);
-    
 // num variable
 // int num = 10;
 
@@ -122,9 +100,26 @@ nodeType* linkedlistCreate(int *ptr, int arrLength)
 //Updating value of num via ptr...
 //num: 20
 //num via ptr: 20
-    
+
+nodeType* linkedlistCreate(int *ptr, int arrLength)
+{
+    int index=1;
+    nodeType *last,*head,*newNode;
+    head = (nodeType*)malloc(sizeof(nodeType));
+
+    head->data = ptr[0];
+    head->next= NULL;
+    last = head;
+
+    for(index=1;index<arrLength;index++)
+    {
+        newNode= (nodeType*)malloc(sizeof(nodeType));
+        newNode ->data = ptr[index];
+        last->next = newNode;
+        last = newNode; //update head node
+    }
+        
     return head;
-   // return 0;
 }
 
 void linkList_Derive_From_Data_delete_first_data()
